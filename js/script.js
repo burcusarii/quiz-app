@@ -56,9 +56,11 @@ document.querySelector(".next_btn").addEventListener("click", function () {
     quiz_answer.innerHTML = " ";
     quiz.soruIndex += 1; // soruIndex'i 1 arttırılarak sorugetir fonksiyonu ile "sorular" dizini içinden bir sonraki indexteki eleman yani soru getirilmesi sağlanır.
     soruGoster(quiz.soruGetir());
+    document.querySelector(".next_btn").classList.remove("show");
   } else {
-    quiz_content.innerHTML = "Quiz bitti";
+    quiz_content.innerHTML = "<div class='quiz-end'>Quiz End</div>";
     quiz_answer.innerHTML = " ";
+    document.querySelector(".next_btn").classList.remove("show");
   }
 });
 
@@ -93,9 +95,11 @@ function soruGoster(soru) {
       if (soru.cevabiKontrolEt(cevap)) {
         opt.classList.add("correct");
         opt.insertAdjacentHTML("beforeend", correctIcon);
+        document.querySelector(".next_btn").classList.add("show");
       } else {
         opt.classList.add("incorrect");
         opt.insertAdjacentHTML("beforeend", incorrectIcon);
+        document.querySelector(".next_btn").classList.add("show");
       }
       for (let i = 0; i < option.length; i++) {
         console.log(option);

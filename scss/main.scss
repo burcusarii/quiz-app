@@ -2,6 +2,7 @@ body {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  font-family: "Lora", serif;
 }
 
 .btn-start,
@@ -56,10 +57,16 @@ body {
       padding: 10px 0 20px 0;
       font-size: 20px;
     }
+
+    .quiz-end {
+      font-size: 25px;
+      color: #333;
+      text-align: center;
+    }
   }
 
   .answer .options {
-    padding: 10px 5px;
+    padding: 10px;
     border: 1px solid #ccc9c9;
     border-radius: 10px;
     margin-bottom: 10px;
@@ -107,6 +114,8 @@ body {
     justify-content: flex-end;
 
     .next_btn {
+      opacity: 0;
+      pointer-events: none;
       background-color: #0a3fee;
       padding: 10px 30px;
       border: none;
@@ -118,7 +127,14 @@ body {
       &:hover {
         background-color: (lighten(#0a3fee, 15));
       }
-      transition: 0.5s;
+      transform: scale(0.8);
+      transition: all 0.5s ease;
+
+      &.show {
+        opacity: 1;
+        pointer-events: auto;
+        transform: scale(1);
+      }
     }
   }
 }
