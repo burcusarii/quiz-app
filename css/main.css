@@ -46,30 +46,33 @@ body {
     .quiz-card .quiz-content .question {
       padding: 10px 0 20px 0;
       font-size: 20px; }
-  .quiz-card .answer .option {
+  .quiz-card .answer .options {
     padding: 10px 5px;
     border: 1px solid #ccc9c9;
     border-radius: 10px;
     margin-bottom: 10px;
     display: flex;
+    justify-content: space-between;
     align-items: center;
     transition: 0.5s;
     cursor: pointer; }
-    .quiz-card .answer .option:hover {
+    .quiz-card .answer .options:hover {
       color: #11282c;
       background-color: #ffd33d; }
-    .quiz-card .answer .option.correct {
+    .quiz-card .answer .options.correct {
       color: #155724;
       background-color: #d4edda; }
-    .quiz-card .answer .option.incorrect {
+    .quiz-card .answer .options.incorrect {
       color: #721c24;
       background-color: #f8d7da; }
-    .quiz-card .answer .option .options {
+    .quiz-card .answer .options .option {
       font-weight: bold;
       margin-right: 3px;
       text-transform: uppercase; }
-      .quiz-card .answer .option .options::after {
+      .quiz-card .answer .options .option::after {
         content: ":"; }
+    .quiz-card .answer .options.disabled {
+      pointer-events: none; }
   .quiz-card .quiz_footer {
     background-color: #f3eded;
     padding: 20px 5px;

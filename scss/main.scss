@@ -58,12 +58,13 @@ body {
     }
   }
 
-  .answer .option {
+  .answer .options {
     padding: 10px 5px;
     border: 1px solid #ccc9c9;
     border-radius: 10px;
     margin-bottom: 10px;
     display: flex;
+    justify-content: space-between;
     align-items: center;
     transition: 0.5s;
     cursor: pointer;
@@ -82,13 +83,17 @@ body {
       background-color: #f8d7da;
     }
 
-    .options {
+    .option {
       font-weight: bold;
       margin-right: 3px;
       text-transform: uppercase;
       &::after {
         content: ":";
       }
+    }
+
+    &.disabled {
+      pointer-events: none;
     }
   }
 
