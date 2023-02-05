@@ -39,18 +39,24 @@ Quiz.prototype.soruGetir = function () {
 const quiz = new Quiz(sorular);
 
 document.querySelector(".btn-start").addEventListener("click", function () {
-  if (quiz.sorular.length != quiz.soruIndex) {
-    document.querySelector(".quiz-card").classList.add("active");
-    soruGoster(quiz.soruGetir());
-    console.log(quiz.soruGetir());
-    quiz.soruIndex += 1;
-  } else {
-    console.log("Quiz Bitti!");
-  }
+  document.querySelector(".quiz-card").classList.add("active");
+  soruGoster(quiz.soruGetir());
 });
 
 const quiz_content = document.querySelector(".quiz-content");
 const quiz_answer = document.querySelector(".answer");
+
+document.querySelector(".next_btn").addEventListener("click", function () {
+  if (quiz.sorular.length != quiz.soruIndex + 1) {
+    quiz_content.innerHTML = " ";
+    quiz_answer.innerHTML = " ";
+    quiz.soruIndex += 1;
+    soruGoster(quiz.soruGetir());
+  } else {
+    quiz_content.innerHTML = "Quiz bitti";
+    quiz_answer.innerHTML = " ";
+  }
+});
 
 function soruGoster(soru) {
   // soru metni
