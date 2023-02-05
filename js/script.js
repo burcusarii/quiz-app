@@ -4,12 +4,12 @@ function Soru(soruMetni, cevapSecenekleri, dogruCevap) {
   this.cevapSecenekleri = cevapSecenekleri;
   this.dogruCevap = dogruCevap;
 }
-
+// cevabıKontrolEt fonksiyonu Soru constructor'ına prototype olarak eklendi. böyleklikle her soru objesinde tekrar çağırılması engellendi.
 Soru.prototype.cevabiKontrolEt = function (cevap) {
   return cevap === this.dogruCevap;
 };
 
-// oluşturulan obje yapısı ile sorular tanımlandı.
+// oluşturulan obje yapısı ile birden fazla soru "sorular" dizisi içine tanımlandı.
 let sorular = [
   new Soru(
     "Hangisi JavaScript Paket Yönetim Uygulamasıdır?",
@@ -25,22 +25,23 @@ let sorular = [
   new Soru("hangisi yenmez?", { a: "çilek", b: "muz", c: "telefon" }, "c"),
 ];
 
-// Quiz için obje yapısı oluşturuldu.
+// Quiz için obje yapısı oluşturuldu. obje içerisine eklenen dizi ve index numarası tanımlanarak sırayla dizinin elemanlarının eklenmesi sağlandı.
 function Quiz(sorular) {
   this.sorular = sorular;
   this.soruIndex = 0;
 }
 
+//Quiz içerisinde soruGetir prototype'ı eklendi.
 Quiz.prototype.soruGetir = function () {
   return this.sorular[this.soruIndex];
 };
 
-// oluşturulan obje yapısı kullanılarak bir quiz hazırlandı;
+// oluşturulan quiz obje yapısı kullanılarak sorular dizisi ile birlikte bir obje oluşturuldu.
 const quiz = new Quiz(sorular);
 
 document.querySelector(".btn-start").addEventListener("click", function () {
   document.querySelector(".quiz-card").classList.add("active");
-  soruGoster(quiz.soruGetir());
+  soruGoster(quiz.soruGetir()); // start butonuna tıklandığında sorugetir fonksiyonu calıstırıldı. Fonksiyon içerisinde soruIndex ilk başta sıfır olarak tanımlandığı için "sorular" dizininin 0 indexi olan 1. soru ekrana yazdırılır.
 });
 
 const quiz_content = document.querySelector(".quiz-content");
@@ -48,9 +49,9 @@ const quiz_answer = document.querySelector(".answer");
 
 document.querySelector(".next_btn").addEventListener("click", function () {
   if (quiz.sorular.length != quiz.soruIndex + 1) {
-    quiz_content.innerHTML = " ";
+    quiz_content.innerHTML = " "; // daha önce eklenen sorunun html elemanlarının silinmesi için content ve answer elemanlarının için sıfırlanır.
     quiz_answer.innerHTML = " ";
-    quiz.soruIndex += 1;
+    quiz.soruIndex += 1; // soruIndex'i 1 arttırılarak sorugetir fonksiyonu ile "sorular" dizini içinden bir sonraki indexteki eleman yani soru getirilmesi sağlanır.
     soruGoster(quiz.soruGetir());
   } else {
     quiz_content.innerHTML = "Quiz bitti";
@@ -67,8 +68,6 @@ function soruGoster(soru) {
 
   // cevap secenekleri
   for (let cevap in soru.cevapSecenekleri) {
-    console.log(cevap);
-    console.log(soru.cevapSecenekleri[cevap]);
     let option_b = document.createElement("span"); // a, b, c secenekleri için span.
     option_b.classList.add("options");
     option_b.innerText = cevap; // a, b, c secenekleri span içine yazıldı.
@@ -80,5 +79,17 @@ function soruGoster(soru) {
     options_div.appendChild(option_b);
     options_div.appendChild(option);
     quiz_answer.appendChild(options_div);
+  }
+
+  const option = quiz_answer.querySelectorAll(".option");
+  console.log(option);
+
+  for (let opt of option) {
+    opt.addEventListener("click", function () {
+      cevap = opt.querySelector("span").textContent;
+      if (soru.cevabiKontrolEt(cevap)) {
+        opt.classList.add("correct");
+      } else opt.classList.add("incorrect");
+    });
   }
 }
