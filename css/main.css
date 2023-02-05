@@ -70,3 +70,23 @@ body {
       text-transform: uppercase; }
       .quiz-card .answer .option .options::after {
         content: ":"; }
+  .quiz-card .quiz_footer {
+    background-color: #f3eded;
+    padding: 20px 5px;
+    font-size: 25px;
+    font-weight: 600;
+    border-top: 1px solid #ccc9c9;
+    display: flex;
+    justify-content: flex-end; }
+    .quiz-card .quiz_footer .next_btn {
+      background-color: #0a3fee;
+      padding: 10px 30px;
+      border: none;
+      border-radius: 10px;
+      color: #fff;
+      font-size: 15px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: 0.5s; }
+      .quiz-card .quiz_footer .next_btn:hover {
+        background-color: #4d75f8; }

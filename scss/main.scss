@@ -91,4 +91,29 @@ body {
       }
     }
   }
+
+  .quiz_footer {
+    background-color: #f3eded;
+    padding: 20px 5px;
+    font-size: 25px;
+    font-weight: 600;
+    border-top: 1px solid #ccc9c9;
+    display: flex;
+    justify-content: flex-end;
+
+    .next_btn {
+      background-color: #0a3fee;
+      padding: 10px 30px;
+      border: none;
+      border-radius: 10px;
+      color: #fff;
+      font-size: 15px;
+      font-weight: 600;
+      cursor: pointer;
+      &:hover {
+        background-color: (lighten(#0a3fee, 15));
+      }
+      transition: 0.5s;
+    }
+  }
 }
