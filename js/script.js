@@ -42,6 +42,8 @@ const quiz = new Quiz(sorular);
 document.querySelector(".btn-start").addEventListener("click", function () {
   document.querySelector(".quiz-card").classList.add("active");
   soruGoster(quiz.soruGetir()); // start butonuna tıklandığında sorugetir fonksiyonu calıstırıldı. Fonksiyon içerisinde soruIndex ilk başta sıfır olarak tanımlandığı için "sorular" dizininin 0 indexi olan 1. soru ekrana yazdırılır.
+  soruSayisiniGoster(quiz.soruIndex + 1, quiz.sorular.length);
+
 });
 
 const quiz_content = document.querySelector(".quiz-content");
@@ -50,20 +52,26 @@ const quiz_answer = document.querySelector(".answer");
 const correctIcon = '<div class="icon"><i class="fas fa-check"></i></div>';
 const incorrectIcon = '<div class="icon"><i class="fas fa-times"></i></div>';
 
+
+// sıradaki soruyu gösterme
 document.querySelector(".next_btn").addEventListener("click", function () {
   if (quiz.sorular.length != quiz.soruIndex + 1) {
     quiz_content.innerHTML = " "; // daha önce eklenen sorunun html elemanlarının silinmesi için content ve answer elemanlarının için sıfırlanır.
     quiz_answer.innerHTML = " ";
     quiz.soruIndex += 1; // soruIndex'i 1 arttırılarak sorugetir fonksiyonu ile "sorular" dizini içinden bir sonraki indexteki eleman yani soru getirilmesi sağlanır.
     soruGoster(quiz.soruGetir());
+    soruSayisiniGoster(quiz.soruIndex + 1, quiz.sorular.length);
     document.querySelector(".next_btn").classList.remove("show");
   } else {
     quiz_content.innerHTML = "<div class='quiz-end'>Quiz End</div>";
     quiz_answer.innerHTML = " ";
     document.querySelector(".next_btn").classList.remove("show");
+    document.querySelector(".question_index").style.display = "none";
   }
 });
 
+
+// soruların ekrana yazdırılması
 function soruGoster(soru) {
   // soru metni
   let question_div = document.createElement("div");
@@ -88,10 +96,12 @@ function soruGoster(soru) {
     quiz_answer.appendChild(options_div);
   }
 
+
+  // tıklanan cevabın doğruluk kontrolü
   const option = quiz_answer.querySelectorAll(".options");
   for (let opt of option) {
     opt.addEventListener("click", function () {
-      cevap = opt.querySelector("span").textContent;
+      cevap = opt.querySelector(".option").textContent;
       if (soru.cevabiKontrolEt(cevap)) {
         opt.classList.add("correct");
         opt.insertAdjacentHTML("beforeend", correctIcon);
@@ -107,4 +117,10 @@ function soruGoster(soru) {
       }
     });
   }
+}
+
+
+function soruSayisiniGoster(SoruSayisi, ToplamSoru) {
+  const tag = `<span class="question_index_item">${SoruSayisi}/${ToplamSoru}</span>`;
+  document.querySelector(".question_index").innerHTML = tag;
 }

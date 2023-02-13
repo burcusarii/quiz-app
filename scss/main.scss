@@ -111,7 +111,7 @@ body {
     font-weight: 600;
     border-top: 1px solid #ccc9c9;
     display: flex;
-    justify-content: flex-end;
+    justify-content: space-between;
 
     .next_btn {
       opacity: 0;
@@ -135,6 +135,15 @@ body {
         pointer-events: auto;
         transform: scale(1);
       }
+    }
+
+    .question_index_item {
+      background-color: #8a6c0b;
+      color: #fff;
+      font-weight:  bold;
+      font-size: 16px;
+      border-radius: 5px;
+      padding: 5px 10px;
     }
   }
 }

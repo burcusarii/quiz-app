@@ -85,7 +85,7 @@ body {
     font-weight: 600;
     border-top: 1px solid #ccc9c9;
     display: flex;
-    justify-content: flex-end; }
+    justify-content: space-between; }
     .quiz-card .quiz_footer .next_btn {
       opacity: 0;
       pointer-events: none;
@@ -105,3 +105,10 @@ body {
         opacity: 1;
         pointer-events: auto;
         transform: scale(1); }
+    .quiz-card .quiz_footer .question_index_item {
+      background-color: #8a6c0b;
+      color: #fff;
+      font-weight: bold;
+      font-size: 16px;
+      border-radius: 5px;
+      padding: 5px 10px; }
