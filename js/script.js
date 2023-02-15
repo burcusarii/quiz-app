@@ -18,9 +18,9 @@ ui.btn_next.addEventListener("click", function () {
     ui.soruSayisiniGoster(quiz.soruIndex + 1, quiz.sorular.length);
     ui.btn_next.classList.remove("show");
   } else {
-    ui.quiz_content.innerHTML = "<div class='quiz-end'>Quiz End</div>";
-    ui.quiz_answer.innerHTML = " ";
-    ui.btn_next.classList.remove("show");
-    document.querySelector(".question_index").style.display = "none";
+    document.querySelector(".score_card").classList.add("active");
+    document.querySelector(".quiz-card").classList.remove("active");
+    ui.skoruGoster(quiz.sorular.length, quiz.dogruCevapSayisi);
+
   }
 });

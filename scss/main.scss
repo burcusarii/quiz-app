@@ -5,13 +5,30 @@ body {
   font-family: "Lora", serif;
 }
 
+.btn {
+  padding: 10px 30px;
+  border: none;
+  border-radius: 10px;
+  font-size: 18px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: 0.5s;
+}
+
+.btn-primary {
+  background-color: #007fB0;
+}
+
+
 .btn-start,
-.quiz-card {
+.quiz-card, 
+.score_card {
   position: absolute;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
 }
+
 
 .start_button {
   background-color: goldenrod;
@@ -138,12 +155,59 @@ body {
     }
 
     .question_index_item {
-      background-color: #8a6c0b;
+      background-color: #3da15b;
       color: #fff;
       font-weight:  bold;
-      font-size: 16px;
+      font-size: 16px; 
       border-radius: 5px;
       padding: 5px 10px;
     }
   }
 }
+
+
+//score_card
+
+.score_card {
+  width: 550px;
+  border: 1px solid #ccc9c9;
+  opacity: 0;
+  pointer-events: none;
+  transition: all 0.7s ease;
+  transform: translate(-50%, -50%) scale(0.5);
+  background-color: #fff;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 40px 10px;
+
+    &.active {
+      opacity: 1;
+      pointer-events: auto;
+      transform: translate(-50%, -50%) scale(1);
+    }
+
+    .score_text {
+      padding: 30px 0 50px 0;
+      font-size: 20px;
+      font-weight: 600;
+    }
+
+    .icon {
+      font-size: 70px;
+      color: #0a3fee;
+    }
+
+    .buttons {
+      .btn {
+        margin: 0 10px;
+        color: #fff;
+
+        &:hover {
+          opacity: 0.8;
+        }
+      }
+
+    }
+  }

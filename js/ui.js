@@ -38,6 +38,7 @@ UI.prototype.soruGoster = function(soru) {
       opt.addEventListener("click", function () {
         cevap = opt.querySelector(".option").textContent;
         if (soru.cevabiKontrolEt(cevap)) {
+          quiz.dogruCevapSayisi += 1;
           opt.classList.add("correct");
           opt.insertAdjacentHTML("beforeend", ui.correctIcon);
           ui.btn_next.classList.add("show");
@@ -58,3 +59,9 @@ UI.prototype.soruSayisiniGoster = function(SoruSayisi, ToplamSoru) {
     const tag = `<span class="question_index_item">${SoruSayisi}/${ToplamSoru}</span>`;
     document.querySelector(".question_index").innerHTML = tag;
   }
+
+
+UI.prototype.skoruGoster = function(SoruSayisi, DogruCevap) {
+  const tag = `Toplam ${SoruSayisi} sorudan ${DogruCevap} doğru cevap verdiniz.`;
+  document.querySelector(".score_card .score_text").innerHTML = tag;
+}

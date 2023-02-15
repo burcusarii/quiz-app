@@ -2,6 +2,7 @@
 function Quiz(sorular) {
     this.sorular = sorular;
     this.soruIndex = 0;
+    this.dogruCevapSayisi = 0;
   }
   
   //Quiz içerisinde soruGetir prototype'ı eklendi.
