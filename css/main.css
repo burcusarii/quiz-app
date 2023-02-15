@@ -24,7 +24,7 @@ body {
   left: 50%;
   transform: translate(-50%, -50%); }
 
-.start_button {
+.start_btn {
   background-color: goldenrod;
   padding: 10px 30px;
   border: none;
@@ -34,7 +34,7 @@ body {
   font-weight: 600;
   cursor: pointer;
   transition: 0.5s; }
-  .start_button:hover {
+  .start_btn:hover {
     background-color: #e8c15f; }
 
 .quiz-card {

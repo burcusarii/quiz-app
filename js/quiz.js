@@ -10,5 +10,3 @@ function Quiz(sorular) {
     return this.sorular[this.soruIndex];
   };
   
-  // oluşturulan quiz obje yapısı kullanılarak sorular dizisi ile birlikte bir obje oluşturuldu.
-  const quiz = new Quiz(sorular);

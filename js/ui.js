@@ -1,6 +1,8 @@
 function UI() {
-    this.btn_start = document.querySelector(".btn-start"),
+    this.btn_start = document.querySelector(".start_btn"),
     this.btn_next = document.querySelector(".next_btn"),
+    this.btn_replay = document.querySelector(".replay_btn"),
+    this.btn_quit = document.querySelector(".quit_btn"),
     this.correctIcon = '<div class="icon"><i class="fas fa-check"></i></div>',
     this.incorrectIcon = '<div class="icon"><i class="fas fa-times"></i></div>'
     this.quiz_content = document.querySelector(".quiz-content"),
@@ -19,14 +21,14 @@ UI.prototype.soruGoster = function(soru) {
       let option_b = document.createElement("span"); // a, b, c secenekleri için span.
       option_b.classList.add("option");
       option_b.innerText = cevap; // a, b, c secenekleri span içine yazıldı.
-      let option = document.createElement("span"); // seçenekler için span.
-      option.innerText = soru.cevapSecenekleri[cevap]; // secenekler a, b, c yanına yazıldı.
+      let option_span = document.createElement("span"); // seçenekler için span.
+      option_span.innerText = soru.cevapSecenekleri[cevap]; // secenekler a, b, c yanına yazıldı.
       let option_item = document.createElement("div");
       let options_div = document.createElement("div"); // opsiyonlar için div.
       options_div.classList.add("options");
   
       option_item.appendChild(option_b);
-      option_item.appendChild(option);
+      option_item.appendChild(option_span);
       options_div.appendChild(option_item);
       ui.quiz_answer.appendChild(options_div);
     }
@@ -34,6 +36,7 @@ UI.prototype.soruGoster = function(soru) {
   
     // tıklanan cevabın doğruluk kontrolü
     const option = ui.quiz_answer.querySelectorAll(".options");
+
     for (let opt of option) {
       opt.addEventListener("click", function () {
         cevap = opt.querySelector(".option").textContent;
@@ -48,7 +51,6 @@ UI.prototype.soruGoster = function(soru) {
           ui.btn_next.classList.add("show");
         }
         for (let i = 0; i < option.length; i++) {
-          console.log(option);
           option[i].classList.add("disabled");
         }
       });

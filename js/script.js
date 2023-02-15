@@ -1,12 +1,13 @@
+// oluşturulan quiz obje yapısı kullanılarak sorular dizisi ile birlikte bir obje oluşturuldu.
+const quiz = new Quiz(sorular);
 const ui = new UI();
+
 ui.btn_start.addEventListener("click", function () {
   document.querySelector(".quiz-card").classList.add("active");
   ui.soruGoster(quiz.soruGetir()); // start butonuna tıklandığında sorugetir fonksiyonu calıstırıldı. Fonksiyon içerisinde soruIndex ilk başta sıfır olarak tanımlandığı için "sorular" dizininin 0 indexi olan 1. soru ekrana yazdırılır.
   ui.soruSayisiniGoster(quiz.soruIndex + 1, quiz.sorular.length);
 
 });
-
-
 
 // sıradaki soruyu gösterme
 ui.btn_next.addEventListener("click", function () {
