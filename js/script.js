@@ -25,3 +25,19 @@ ui.btn_next.addEventListener("click", function () {
 
   }
 });
+
+ui.btn_quit.addEventListener("click", function() {
+  window.location.reload();
+})
+
+
+ui.btn_replay.addEventListener("click", function() {
+  document.querySelector(".score_card").classList.remove("active");
+  ui.quiz_content.innerHTML = " ";
+  ui.quiz_answer.innerHTML = " ";
+  ui.btn_next.classList.remove("show");
+  quiz.soruIndex = 0;
+  quiz.dogruCevapSayisi = 0;
+  ui.btn_start.click();
+
+})
